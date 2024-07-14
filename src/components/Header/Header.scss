@@ -10,11 +10,8 @@
   &__content {
     display: flex;
     flex-direction: column;
-
     gap: 1rem;
   }
-
-
 
   &__icons {
     display: flex;
@@ -27,7 +24,9 @@
     align-items: center;
   }
 
-  &__text {
+  &__button {
+    background-color: transparent;
+    border-style: none;
     @include body-white;
   }
 
@@ -36,8 +35,17 @@
     gap: 1rem;
     align-items: center;
   }
+
+  &__text{
+    color: $fmm-white;
+  }
 }
 
 img {
   @include icons;
+}
+
+.previous-icon{
+  width: 24px;
+  height: 24px;
 }

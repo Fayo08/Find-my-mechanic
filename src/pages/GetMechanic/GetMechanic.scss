@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+#map {
+  height: 100%;
+  z-index: -1;
+}
+
+.background {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  overflow: scroll;
+  padding: 1rem;
+  width: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 43vh;
+  border-radius: 5%;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+}

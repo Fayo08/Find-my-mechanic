@@ -69,17 +69,18 @@ Geolocation Api
 
 ### Mockups
 
-#### Home Page
-![](homepage.jpg)
 
 #### Register Page
 ![](sign-up.jpg)
 
-#### Save Car Details Page
-![](save-car-details.jpg)
+
+#### Home Page
+![](homepage.jpg)
+
 
 #### Book a service Page
 ![](book-service.jpg)
+
 
 #### Enter Location Page
 ![](set-location.jpg)

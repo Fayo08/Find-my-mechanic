@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.mechanic-list {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  
+  &__img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price{
+    margin-left: 1rem;
+  }
+}
