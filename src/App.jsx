@@ -21,7 +21,7 @@ function App() {
         <Route path="/services" element={<BookService />}></Route>
         <Route path="/homepage-copy" element={<HomepageCopy />}></Route>
         <Route path="/services/category/:category/mechanics" element={<GetMechanic />}></Route>
-        <Route path="/mechanics/:id" element={<MechanicDetails />}></Route>
+        <Route path="/mechanics/:mechanicId" element={<MechanicDetails />}></Route>
 
         
 

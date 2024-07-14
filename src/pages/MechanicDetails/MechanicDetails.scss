@@ -1,0 +1,74 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.mechanic-details {
+    overflow: scroll;
+  @include background;
+
+  &__about{
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+
+  &__Icon-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__icons {
+    width: 20px;
+    height: 20px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: #8a8a8a;
+    justify-content: center;
+    border-radius: 7px;
+  }
+  &__input-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__input {
+    width: 220px;
+    height: 50px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 7px;
+    padding: 1rem;
+  }
+
+  &__divider-line{
+    background-color: black;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__divider-line1{
+    background-color: #D9D9D9;
+
+    height: 6px;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+  }
+
+  &__reviews{
+    margin: 1rem;
+  }
+}
