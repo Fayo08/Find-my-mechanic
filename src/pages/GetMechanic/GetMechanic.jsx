@@ -3,18 +3,19 @@ import Header from "../../components/Header/Header";
 import { api_URL } from "../../../utils.js";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./GetMechanic.scss";
 import carPhoto from "../../assets/images/Car.png";
 import MechanicList from "../../components/MechanicList/MechanicList.jsx";
 import LocationsMap from "../../components/Map/LocationsMap.jsx";
-
 import Buttons from "../../components/Buttons/Buttons.jsx";
 
 function GetMechanic(props) {
+  const navigate = useNavigate();
   const { category } = useParams();
   const [mechanics, setMechanics] = useState([]);
   const [services, setServices] = useState([]);
+  const [selectedMechanic, setSelectedMechanic] = useState([]);
 
   useEffect(() => {
     const fetchMechanics = async () => {
@@ -30,8 +31,16 @@ function GetMechanic(props) {
     fetchMechanics();
   }, [category]);
 
-  
-
+  const handleClick = (mechanicId) => {
+    const selectedMechanic = mechanics.find(
+      (mechanic) => mechanic.id === mechanicId
+    );
+    console.log("Selected mechanic:", selectedMechanic);
+    setSelectedMechanic(selectedMechanic);
+    if (selectedMechanic) {
+      navigate(`/mechanics/${selectedMechanic.id}`);
+    }
+  };
 
   return (
     <main>
@@ -46,15 +55,11 @@ function GetMechanic(props) {
         />
 
         <div>
-          {mechanics.map((mechanic) => {
-            return (
-              <MechanicList
-                key={mechanic.id}
-              
-                mechanic ={mechanic}
-              />
-            );
-          })}
+          {mechanics.map((mechanic) => (
+            <div key={mechanic.id} onClick={() => handleClick(mechanic.id)}>
+              <MechanicList mechanic={mechanic} />
+            </div>
+          ))}
         </div>
       </section>
     </main>

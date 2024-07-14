@@ -81,7 +81,7 @@ function HomepageCopy(props) {
       <Header onGetCurrentLocation={() => window.GetCurrentLocation()}  originalMessage= "Edmonton,Alberta" />
 <section className="homepage">
       <div className="homepage__buttons">
-<Link to="/book-service" className="homepage__button-link">
+<Link to="/services" className="homepage__button-link">
         <ButtonWithIcon img={bookIcon} text="Book a service" colorClass="button-with-icon" />
         </Link>
         <ButtonWithIcon img={scheduleIcon} text="Schedule a service" colorClass="button-with-icon" />
