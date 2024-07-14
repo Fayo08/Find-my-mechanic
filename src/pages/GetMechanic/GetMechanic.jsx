@@ -3,7 +3,8 @@ import Header from "../../components/Header/Header";
 import { api_URL } from "../../../utils.js";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./GetMechanic.scss";
 import carPhoto from "../../assets/images/Car.png";
 import MechanicList from "../../components/MechanicList/MechanicList.jsx";
@@ -12,6 +13,8 @@ import LocationsMap from "../../components/Map/LocationsMap.jsx";
 import Buttons from "../../components/Buttons/Buttons.jsx";
 
 function GetMechanic(props) {
+
+    const navigate = useNavigate();
   const { category } = useParams();
   const [mechanics, setMechanics] = useState([]);
   const [services, setServices] = useState([]);
@@ -30,7 +33,11 @@ function GetMechanic(props) {
     fetchMechanics();
   }, [category]);
 
-  
+ const handleClick = (e) =>{
+    if (mechanics){
+        navigate()
+    }
+ }
 
 
   return (
@@ -45,7 +52,7 @@ function GetMechanic(props) {
           textForServices={services.type}
         />
 
-        <div>
+        <Link to= "/mechanics/:id"  className="link">
           {mechanics.map((mechanic) => {
             return (
               <MechanicList
@@ -55,7 +62,7 @@ function GetMechanic(props) {
               />
             );
           })}
-        </div>
+        </Link>
       </section>
     </main>
   );
