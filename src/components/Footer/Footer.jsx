@@ -1,6 +1,6 @@
 import React from "react";
 import homeIcon from "../../assets/icons/home.svg";
-import toolsIcon from "../../assets/icons/tools.svg";
+import { Link } from "react-router-dom";
 import userIcon from "../../assets/icons/user.svg";
 import './Footer.scss'
 
@@ -11,7 +11,9 @@ function Footer(props) {
         <div className="footer__content">
             <div className="footer__icon-container">
           <div className="footer__icon">
+<Link to="/">
             <img className="footer__img" src={homeIcon} alt="This is a home icon" />
+            </Link>
             <p className="footer__text">Home</p>
           </div>
 

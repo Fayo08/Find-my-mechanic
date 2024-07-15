@@ -45,7 +45,7 @@ const MechanicDistance = () => {
 
   return (
     <>
-      <Header originalMessage="Edmonton, Alberta" />
+      <Header Backlink="/" originalMessage="Edmonton, Alberta" />
       <LocationsMap />
       <main className="mechanic-distance">
         <h3>{arrived}</h3>
