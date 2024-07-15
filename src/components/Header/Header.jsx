@@ -2,13 +2,16 @@ import React from "react";
 import internetIcon from "../../assets/icons/internet.svg";
 import backIcon from "../../assets/icons/backIcon.svg"
 import wifiIcon from "../../assets/icons/wifi.svg";
-import batteryIcon from "../../assets/icons/battery.svg";
 import mobileBattery from "../../assets/icons/batterymobile.svg"
 import locationIcon from "../../assets/icons/location.svg";
+import Modal from "../Modal/Modal";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-function Header({ onGetCurrentLocation, locationMessage, originalMessage }) {
+function Header({  Backlink, onClick, location, originalMessage }) {
+
+
+
   return (
     <>
       <header className="header">
@@ -22,14 +25,15 @@ function Header({ onGetCurrentLocation, locationMessage, originalMessage }) {
               <img src={mobileBattery} alt="This is a battery icon" />
             </div>
           </div>
-          <Link to="/">
-            <img className="previous-icon" src={backIcon} alt="This is a previous icon" />
+          <Link to={Backlink}>
+            <img className="previous-icon"  onClick={onClick} src={backIcon} alt="This is a previous icon" />
         </Link>
+    
           <div className="header__location">
             <img src={locationIcon} alt=" This is a location Icon" />
-          <Link to="/homepage-copy" > 
-          <button onClick={onGetCurrentLocation} className="header__button">
-              {locationMessage} {originalMessage}
+          <Link to="/get-location" > 
+          <button  className="header__button">
+       {location ? location : originalMessage}
             </button>
             </Link> 
           </div>

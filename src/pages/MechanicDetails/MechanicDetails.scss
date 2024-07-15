@@ -4,7 +4,12 @@
 
 .mechanic-details {
     overflow: scroll;
+    box-sizing: border-box;
   @include background;
+
+  &__container{
+    position: relative;
+  }
 
   &__about{
     margin-bottom: 1rem;
@@ -70,5 +75,14 @@
 
   &__reviews{
     margin: 1rem;
+  }
+
+  &__link{
+    text-decoration: none;
+  }
+
+  &__button{
+    display: flex;
+    justify-content: space-around;
   }
 }

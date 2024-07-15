@@ -60,6 +60,7 @@ function BookService() {
       <Header
         onGetCurrentLocation={() => window.GetCurrentLocation()}
         originalMessage="Edmonton, Alberta"
+        Backlink="/get-location"
       />
       <section className="bookservice">
         <div className="bookservice__content">

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Modal.scss';
 
+
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 

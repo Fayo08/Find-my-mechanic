@@ -8,11 +8,13 @@ import "./MechanicDetails.scss";
 import phoneIcon from "../../assets/icons/phone.svg";
 import cameraIcon from "../../assets/icons/camera.svg";
 import Buttons from "../../components/Buttons/Buttons.jsx";
+import Modal from "../../components/Modal/Modal.jsx";
 
 function MechanicDetails() {
   const { mechanicId } = useParams();
   const [mechanicDetails, setMechanicDetails] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchMechanic = async () => {
@@ -50,12 +52,23 @@ function MechanicDetails() {
   const { image_path } = mechanicDetails;
   const imageUrl = `http://localhost:8080/img${image_path}`;
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
-      <Header />
+      <Header onClick={openModal} />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>Are you sure you want to cancel?</h2>
+        <p>Your changes will not be saved</p>
+        <Link className="mechanic-details__link" to="/bookservices">
+          <Buttons buttonText="Confirm" colorClass="button-with-icon-greenbg" />
+        </Link>
+      </Modal>
       <LocationsMap />
 
       <section className="mechanic-details">
+        <div className="mechanic-details__container">
         <div className="mechanic-details__about">
           <div className="mechanic-details__info">
             <img className="mechanic-details__img" src={imageUrl} alt="" />
@@ -105,13 +118,19 @@ function MechanicDetails() {
             </div>
           ))}
         </div>
-<Link to='/distance'>
-        <Buttons
-              
-              buttonText="Confirm Request"
-              colorClass={"pri-button"}
-            />
-            </Link>
+        <div className="mechanic-details__button">
+         
+
+          <Buttons
+            onClick={openModal}
+            buttonText="Cancel Request"
+            colorClass={"cancel"}
+          />
+           <Link className="mechanic-details__link" to="/distance">
+            <Buttons buttonText="Confirm Request" colorClass={"pri-button"} />
+          </Link>
+        </div>
+        </div>
       </section>
     </>
   );

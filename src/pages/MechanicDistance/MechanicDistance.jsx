@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import TimeSlider from '../../components/TimeSlider/TimeSlider';
-import Header from '../../components/Header/Header';
-import LocationsMap from '../../components/Map/LocationsMap';
-import { useParams } from 'react-router-dom';
-import { api_URL } from "../../../utils.js";
+import React, { useState, useEffect } from "react";
+import TimeSlider from "../../components/TimeSlider/TimeSlider";
+import Header from "../../components/Header/Header";
+import LocationsMap from "../../components/Map/LocationsMap";
+import { useParams, useNavigate } from "react-router-dom";
 
-import axios from 'axios';
-import './MechanicDistance.scss'
+
+import axios from "axios";
+import "./MechanicDistance.scss";
 
 const MechanicDistance = () => {
-    const { mechanicId } = useParams();
-  const [totalTime, setTotalTime] = useState(15); 
-  const [mechanicDetails, setMechanicDetails] = useState(null);
+  const navigate = useNavigate();
+  const { mechanicId } = useParams();
+  const [totalTime, setTotalTime] = useState(15);
+  const [reviewPage, setReviewPage] = useState(null);
+  const [arrived, setArrived] = useState('Your mechanic is arriving soon.');
+
+
 
   const [currentTime, setCurrentTime] = useState(0);
- 
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,26 +28,30 @@ const MechanicDistance = () => {
         }
         return prevTime + 1;
       });
-    }, 1000); 
+    }, 1000);
 
     return () => clearInterval(timer);
-
-   
   }, [totalTime]);
 
-
+  useEffect(() => {
+    if (currentTime === totalTime) {
+      setArrived('Your rider has arrived!')
+      const navigationTimer = setTimeout(() => {
+        navigate('/post-review');
+      }, 2000);
+      return () => clearTimeout(navigationTimer);
+    }
+  }, [currentTime, totalTime, navigate]);
 
   return (
     <>
-    <Header />
-    <LocationsMap />
-    <main className='mechanic-distance'>
-  
-      <h3>Israel is arriving soon.</h3>
-      <TimeSlider totalTime={totalTime} currentTime={currentTime} />
-<p>Hang tight for some minutes, help is on the way!</p>
- 
-    </main>
+      <Header originalMessage="Edmonton, Alberta" />
+      <LocationsMap />
+      <main className="mechanic-distance">
+        <h3>{arrived}</h3>
+        <TimeSlider totalTime={totalTime} currentTime={currentTime} />
+        <p>Hang tight for some minutes, help is on the way!</p>
+      </main>
     </>
   );
 };
