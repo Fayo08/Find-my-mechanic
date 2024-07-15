@@ -39,7 +39,7 @@ function PostReview() {
       alert("Review submitted successfully");
       navigate(`/`);
     } catch (error) {
-      console.error("Error submitting review:", error);
+      
       alert("Failed to submit review. Please try again.");
     }
   };
