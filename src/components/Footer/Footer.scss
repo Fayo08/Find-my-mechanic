@@ -30,6 +30,12 @@
     gap: 1rem;
   }
 
+  &__icon-container{
+    display:flex;
+    flex-direction: row;
+    gap: 192px
+  }
+
   &__text{
     @include body-black;
   }

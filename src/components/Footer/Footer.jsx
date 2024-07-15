@@ -9,20 +9,18 @@ function Footer(props) {
     <>
       <footer className="footer">
         <div className="footer__content">
-            
+            <div className="footer__icon-container">
           <div className="footer__icon">
             <img className="footer__img" src={homeIcon} alt="This is a home icon" />
             <p className="footer__text">Home</p>
           </div>
 
-          <div className="footer__icon">
-            <img className="footer__img" src={toolsIcon} alt="This is a screw icon" />
-            <p className="footer__text">Quick fix</p>
-          </div>
+       
 
           <div className="footer__icon">
             <img className="footer__img" src={userIcon} alt="This is a user icon" />
             <p className="footer__text"> You</p>
+          </div>
           </div>
         </div>
       </footer>
