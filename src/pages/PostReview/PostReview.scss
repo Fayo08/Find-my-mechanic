@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.post-review {
+  &__form {
+    @include formFields;
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__label-spacing {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+}
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: $fmm-gray;
+}

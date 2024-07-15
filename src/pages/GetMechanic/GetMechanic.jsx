@@ -5,10 +5,11 @@ import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./GetMechanic.scss";
-import carPhoto from "../../assets/images/Car.png";
+import carPhoto from "../../assets/images/car.svg";
 import MechanicList from "../../components/MechanicList/MechanicList.jsx";
 import LocationsMap from "../../components/Map/LocationsMap.jsx";
 import Buttons from "../../components/Buttons/Buttons.jsx";
+import ButtonWithIcon from "../../components/ButtonWithIcon/ButtonWithIcon.jsx";
 
 function GetMechanic(props) {
   const navigate = useNavigate();
@@ -23,9 +24,10 @@ function GetMechanic(props) {
         const response = await axios.get(
           `${api_URL}/api/services/mechanics/category/${category}`
         );
+
         setMechanics(response.data);
       } catch (error) {
-        console.error(`Error fetching mechanic`, error);
+        alert(`Error fetching mechanic`);
       }
     };
     fetchMechanics();
@@ -35,7 +37,7 @@ function GetMechanic(props) {
     const selectedMechanic = mechanics.find(
       (mechanic) => mechanic.id === mechanicId
     );
-    console.log("Selected mechanic:", selectedMechanic);
+
     setSelectedMechanic(selectedMechanic);
     if (selectedMechanic) {
       navigate(`/mechanics/${selectedMechanic.id}`);
@@ -44,12 +46,13 @@ function GetMechanic(props) {
 
   return (
     <main>
-      <Header originalMessage="Edmonton, Alberta" />
+      <Header originalMessage="Edmonton, Alberta" Backlink="/bookservices" />
       <LocationsMap />
       <section className="background">
-        <Buttons
+        <ButtonWithIcon
           img={carPhoto}
-          buttonText="BMW iX M60 2022"
+          imgClass="img-getMechanic"
+          text="BMW iX M60 2022"
           colorClass="button-with-icon-greenbg-fullwidth"
           textForServices={services.type}
         />

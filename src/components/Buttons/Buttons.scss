@@ -9,3 +9,18 @@
     color: $fmm-white;
     @include pributtons;
 }
+
+.cancel{
+    width: 100%;
+    background-color: transparent;
+    gap: 0.5rem;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.4375rem;
+        padding: 1rem .5rem;
+        font-size: 16px;
+        border-style: none;
+    color: $fmm-red;
+}

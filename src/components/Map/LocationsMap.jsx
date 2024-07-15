@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const LocationsMap = ({GetCurrentLocation}) => {
+const LocationsMap = ({setCurrentLocation}) => {
     const mapRef = useRef(null);
     const infoWindowRef = useRef(null);
   
@@ -40,9 +40,12 @@ const LocationsMap = ({GetCurrentLocation}) => {
                 };
   
                 infoWindowRef.current.setPosition(pos);
-                infoWindowRef.current.setContent("Edmonton,Alberta.");
+                infoWindowRef.current.setContent("Edmonton, Alberta.");
                 infoWindowRef.current.open(map);
                 map.setCenter(pos);
+
+                setCurrentLocation("Edmonton, Alberta");
+
               },
               () => {
                 handleLocationError(true, infoWindowRef.current, map.getCenter());
@@ -53,7 +56,7 @@ const LocationsMap = ({GetCurrentLocation}) => {
           }
         };
   
-        window.GetCurrentLocation = GetCurrentLocation;
+        GetCurrentLocation();
       };
   
       loader
@@ -62,9 +65,9 @@ const LocationsMap = ({GetCurrentLocation}) => {
           initMap();
         })
         .catch((e) => {
-          console.error("Error loading Google Maps:", e);
+          alert("Error loading Google Maps:", e);
         });
-    }, []);
+    }, [setCurrentLocation]);
 
   return  <div
   id="map"

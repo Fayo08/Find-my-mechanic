@@ -21,10 +21,10 @@ function BookService() {
     const fetchServices = async () => {
       try {
         const response = await axios.get(`${api_URL}/api/services`);
-        console.log("Fetched services:", response.data);
+
         setServices(response.data);
       } catch (error) {
-        console.error('Failure fetching services ', error);
+        alert("Failure fetching services ");
       }
     };
     fetchServices();
@@ -39,7 +39,7 @@ function BookService() {
     const selectedService = services.find(
       (service) => service.type === selectedOption
     );
-    console.log("Selected service:", selectedService);
+
     setSelectedService(selectedService);
     setIsOpen(false);
   };
@@ -47,11 +47,10 @@ function BookService() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedService && selectedService.category) {
-      console.log("Navigating to mechanics with category:", selectedService.category);
       navigate(`/services/category/${selectedService.category}/mechanics`);
     } else {
-      console.error("No service selected or category missing");
-      alert('Please select a service');
+      
+      alert("Please select a service");
     }
   };
 
@@ -60,6 +59,7 @@ function BookService() {
       <Header
         onGetCurrentLocation={() => window.GetCurrentLocation()}
         originalMessage="Edmonton, Alberta"
+        Backlink="/get-location"
       />
       <section className="bookservice">
         <div className="bookservice__content">
