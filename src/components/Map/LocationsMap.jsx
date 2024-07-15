@@ -65,7 +65,7 @@ const LocationsMap = ({setCurrentLocation}) => {
           initMap();
         })
         .catch((e) => {
-          console.error("Error loading Google Maps:", e);
+          alert("Error loading Google Maps:", e);
         });
     }, [setCurrentLocation]);
 

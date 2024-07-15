@@ -24,10 +24,10 @@ function GetMechanic(props) {
         const response = await axios.get(
           `${api_URL}/api/services/mechanics/category/${category}`
         );
-        console.log(response.data)
+
         setMechanics(response.data);
       } catch (error) {
-        console.error(`Error fetching mechanic`, error);
+        alert(`Error fetching mechanic`);
       }
     };
     fetchMechanics();
@@ -37,7 +37,7 @@ function GetMechanic(props) {
     const selectedMechanic = mechanics.find(
       (mechanic) => mechanic.id === mechanicId
     );
-    console.log("Selected mechanic:", selectedMechanic);
+
     setSelectedMechanic(selectedMechanic);
     if (selectedMechanic) {
       navigate(`/mechanics/${selectedMechanic.id}`);
@@ -46,7 +46,7 @@ function GetMechanic(props) {
 
   return (
     <main>
-      <Header originalMessage="Edmonton, Alberta" Backlink='/bookservices' />
+      <Header originalMessage="Edmonton, Alberta" Backlink="/bookservices" />
       <LocationsMap />
       <section className="background">
         <ButtonWithIcon

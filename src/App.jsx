@@ -24,8 +24,8 @@ function App() {
         <Route path="/get-location" element={<GetLocation />}></Route>
         <Route path="/services/category/:category/mechanics" element={<GetMechanic />}></Route>
         <Route path="/mechanics/:mechanicId" element={<MechanicDetails />}></Route>
-        <Route path="/distance" element={<MechanicDistance />}></Route>
-        <Route path="/post-review" element={<PostReview />}></Route>
+        <Route path="/distance/:mechanicId" element={<MechanicDistance />}></Route>
+        <Route path="/post-review/:mechanicId" element={<PostReview />}></Route>
 
         
 

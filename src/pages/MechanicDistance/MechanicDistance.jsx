@@ -37,7 +37,7 @@ const MechanicDistance = () => {
     if (currentTime === totalTime) {
       setArrived('Your rider has arrived!')
       const navigationTimer = setTimeout(() => {
-        navigate('/post-review');
+        navigate('/post-review/:mechanicId');
       }, 2000);
       return () => clearTimeout(navigationTimer);
     }

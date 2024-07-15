@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import LocationsMap from "../../components/Map/LocationsMap";
@@ -11,6 +11,7 @@ import Buttons from "../../components/Buttons/Buttons.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 
 function MechanicDetails() {
+  const navigate = useNavigate();
   const { mechanicId } = useParams();
   const [mechanicDetails, setMechanicDetails] = useState(null);
   const [reviews, setReviews] = useState([]);
@@ -22,10 +23,10 @@ function MechanicDetails() {
         const response = await axios.get(
           `${api_URL}/api/mechanics/${mechanicId}`
         );
-        console.log("Fetched mechanic details:", response.data);
+
         setMechanicDetails(response.data);
       } catch (error) {
-        console.error("Failure fetching mechanic ", error);
+        alert("Failure fetching mechanic ");
       }
     };
 
@@ -34,10 +35,10 @@ function MechanicDetails() {
         const response = await axios.get(
           `${api_URL}/api/reviews/mechanics/${mechanicId}/reviews`
         );
-        console.log("Fetched reviews:", response.data);
+
         setReviews(response.data);
       } catch (error) {
-        console.error("Failure fetching reviews ", error);
+        alert("Failure fetching reviews ");
       }
     };
 
@@ -55,6 +56,14 @@ function MechanicDetails() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const handleClick = () => {
+    if (mechanicDetails && mechanicDetails.id) {
+      navigate(`/distance/${mechanicDetails.id}`);
+    } else {
+      alert("Mechanic details not available. Current state:", mechanicDetails);
+    }
+  };
+
   return (
     <>
       <Header onClick={openModal} />
@@ -69,67 +78,68 @@ function MechanicDetails() {
 
       <section className="mechanic-details">
         <div className="mechanic-details__container">
-        <div className="mechanic-details__about">
-          <div className="mechanic-details__info">
-            <img className="mechanic-details__img" src={imageUrl} alt="" />
-            <div>
-              <h2>{mechanicDetails.name}</h2>
-              <p>Location: {mechanicDetails.location}</p>
-            </div>
-          </div>
-          <div className="mechanic-details__input-container">
-            <form action="">
-              <input
-                className="mechanic-details__input"
-                placeholder="Any notes?"
-                type="text"
-                name=""
-                id=""
-              />
-            </form>
-            <div className="mechanic-details__Icon-container">
-              <div className="mechanic-details__icons">
-                {" "}
-                <img src={phoneIcon} alt="" />
-              </div>
-              <div className="mechanic-details__icons">
-                {" "}
-                <img src={cameraIcon} alt="" />
+          <div className="mechanic-details__about">
+            <div className="mechanic-details__info">
+              <img className="mechanic-details__img" src={imageUrl} alt="" />
+              <div>
+                <h2>{mechanicDetails.name}</h2>
+                <p>Location: {mechanicDetails.location}</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="mechanic-details__divider-line"></div>
-        <div>
-          <h3>Car details</h3>
-          <p>BMW iX M60 2022</p>
-        </div>
-        <div className="mechanic-details__divider-line1"></div>
-
-        <div>
-          <h3>Reviews</h3>
-
-          {reviews.map((review) => (
-            <div className="mechanic-details__reviews" key={review.id}>
-              <h3> {review.reviewer} </h3>
-
-              <p>Rating: {review.rating}</p>
-              <p> {review.comment}</p>
+            <div className="mechanic-details__input-container">
+              <form action="">
+                <input
+                  className="mechanic-details__input"
+                  placeholder="Any notes?"
+                  type="text"
+                  name=""
+                  id=""
+                />
+              </form>
+              <div className="mechanic-details__Icon-container">
+                <div className="mechanic-details__icons">
+                  {" "}
+                  <img src={phoneIcon} alt="" />
+                </div>
+                <div className="mechanic-details__icons">
+                  {" "}
+                  <img src={cameraIcon} alt="" />
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="mechanic-details__button">
-         
+          </div>
+          <div className="mechanic-details__divider-line"></div>
+          <div>
+            <h3>Car details</h3>
+            <p>BMW iX M60 2022</p>
+          </div>
+          <div className="mechanic-details__divider-line1"></div>
 
-          <Buttons
-            onClick={openModal}
-            buttonText="Cancel Request"
-            colorClass={"cancel"}
-          />
-           <Link className="mechanic-details__link" to="/distance">
-            <Buttons buttonText="Confirm Request" colorClass={"pri-button"} />
-          </Link>
-        </div>
+          <div>
+            <h3>Reviews</h3>
+
+            {reviews.map((review) => (
+              <div className="mechanic-details__reviews" key={review.id}>
+                <h3> {review.reviewer} </h3>
+
+                <p>Rating: {review.rating}</p>
+                <p> {review.comment}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mechanic-details__button">
+            <Buttons
+              onClick={openModal}
+              buttonText="Cancel Request"
+              colorClass={"cancel"}
+            />
+
+            <Buttons
+              buttonText="Confirm Request"
+              onClick={handleClick}
+              colorClass={"pri-button"}
+            />
+          </div>
         </div>
       </section>
     </>
