@@ -41,7 +41,11 @@ Vendors:
 
 
 ### Features
-- 
+- Have two categories
+Catering and Jollof rice mondays
+
+Select Catering 
+- I can 
 
 - As a user, I want to able to find the closest repair service closest to any given location.
 - As a user, I want to able to find the closest repair service closest to my current location.

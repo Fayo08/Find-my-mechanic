@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp/SignUp";
-
+import ScheduleService from "./pages/ScheduleService/ScheduleService";
 import Homepage from "./pages/Homepage/Homepage";
 import BookService from "./pages/BookService/BookService";
 import GetLocation from './pages/GetLocation/GetLocation'
@@ -26,6 +26,7 @@ function App() {
         <Route path="/mechanics/:mechanicId" element={<MechanicDetails />}></Route>
         <Route path="/distance/:mechanicId" element={<MechanicDistance />}></Route>
         <Route path="/post-review/:mechanicId" element={<PostReview />}></Route>
+        <Route path= "/schedule-service" element = {<ScheduleService/>}></Route>
 
         
 

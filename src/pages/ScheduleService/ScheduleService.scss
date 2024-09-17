@@ -1,0 +1,127 @@
+
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.bookservice {
+  position: relative;
+
+  &__location {
+    height: 30%;
+    box-sizing: border-box;
+
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    background-color: $fmm-green;
+    padding: 1rem;
+    gap: .5rem
+    
+  }
+  &__card{
+    padding: 16px;
+    width: auto;
+    height: auto;
+    flex-flow: column;
+    display: flex;
+    border: 1px solid $fmm-black-outline;
+    border-radius: 13px;
+    gap: 3rem;
+  }
+
+  &__content {
+   
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    overflow: scroll;
+    padding: 1rem;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    border-radius: 5%;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  &__car-details{
+display: flex;
+gap: .5rem;
+  }
+
+  &__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__services{
+    border-bottom: 1px solid black;
+  }
+
+&__list-container{
+  list-style: none;
+  
+}
+
+&__list{
+  padding: .5rem;
+  
+}
+  
+}
+
+#map {
+      height: 100%;
+      z-index: -1;
+      }
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+ display: flex;
+ gap: .5rem;
+  background-color: transparent;
+  color: $fmm-black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: $fmm-gray;
+}
+
+.dropdown-toggle:focus {
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dropdown-menu li {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f1f1f1;
+}
+
+
+.link{
+  text-decoration: none;
+}
