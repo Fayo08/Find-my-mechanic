@@ -8,14 +8,12 @@ import "./GetMechanic.scss";
 import carPhoto from "../../assets/images/car.svg";
 import MechanicList from "../../components/MechanicList/MechanicList.jsx";
 import LocationsMap from "../../components/Map/LocationsMap.jsx";
-import Buttons from "../../components/Buttons/Buttons.jsx";
 import ButtonWithIcon from "../../components/ButtonWithIcon/ButtonWithIcon.jsx";
 
 function GetMechanic(props) {
   const navigate = useNavigate();
   const { category } = useParams();
   const [mechanics, setMechanics] = useState([]);
-  const [services, setServices] = useState([]);
   const [selectedMechanic, setSelectedMechanic] = useState([]);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ function GetMechanic(props) {
         const response = await axios.get(
           `${api_URL}/api/services/mechanics/category/${category}`
         );
-
+console.log(mechanics)
         setMechanics(response.data);
       } catch (error) {
         alert(`Error fetching mechanic`);
@@ -32,6 +30,8 @@ function GetMechanic(props) {
     };
     fetchMechanics();
   }, [category]);
+
+  
 
   const handleClick = (mechanicId) => {
     const selectedMechanic = mechanics.find(
@@ -54,7 +54,8 @@ function GetMechanic(props) {
           imgClass="img-getMechanic"
           text="BMW iX M60 2022"
           colorClass="button-with-icon-greenbg-fullwidth"
-          textForServices={services.type}
+          flexClass="car-description"
+          textForServices={category}
         />
 
         <div>

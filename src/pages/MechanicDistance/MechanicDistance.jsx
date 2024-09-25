@@ -35,7 +35,7 @@ const MechanicDistance = () => {
 
   useEffect(() => {
     if (currentTime === totalTime) {
-      setArrived('Your rider has arrived!')
+      setArrived('Your mechanic has arrived!')
       const navigationTimer = setTimeout(() => {
         navigate('/post-review/:mechanicId');
       }, 2000);

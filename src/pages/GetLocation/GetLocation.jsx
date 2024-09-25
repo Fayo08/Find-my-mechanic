@@ -6,6 +6,7 @@ import  batteryIcon from '../../assets/icons/battery.svg'
 import tyreIcon from '../../assets/icons/tyre.svg'
 import bookIcon from "../../assets/icons/bookmark.svg";
 import scheduleIcon from "../../assets/icons/schedule.svg";
+import ScheduleService from "../ScheduleService/ScheduleService";
 
 import LocationsMap from "../../components/Map/LocationsMap";
 import { Link } from "react-router-dom";
@@ -27,7 +28,9 @@ function GetLocation(props) {
 <Link to="/bookservices"  className="homepage__button-link">
         <ButtonWithIcon img={bookIcon} text="Book a service" colorClass="button-with-icon-whitebg-fullwidth" />
         </Link>
+        <Link to="/schedule-service">
         <ButtonWithIcon img={scheduleIcon} text="Schedule a service" colorClass="button-with-icon" />
+        </Link>
       </div>
       <div className="homepage__content"> 
       <h3>Quick tips</h3>
