@@ -9,29 +9,10 @@ Find-my-mechanic is a product for users who find themselves stranded needing aut
 
 About one in three drivers find themselves stranded in an unknown area due to a car breakdown, a situation that can be both unprecedented and stressful. This leaves drivers vulnerable, often facing long hours of waiting for assistance. The uncertainty is compounded by concerns over the trustworthiness and quality of the repair services available. Ensuring reliable help and maintaining peace of mind in such scenarios remains a significant challenge for many motorists.
 
--Convenient food delivery for ethnic foods with chefs that have varying schedules.
-- Subscription model 
 
-A scheduled meal-kit service.
-Specific days, specific service
 
 
 ### User Profile
-- Blacks
-- Asians
-- Jamaicans
-- Africans
-- Foodies
-
-- Young profesionals
-- 20-35 years
-- Come back late at night, and has to decide whether they want to cook
-- Busy during the days and don't cook
-
-Vendors:
-- 
-- 
-
 
 - Drivers:
     - stranded with a broken down vehicle in an unknown location
