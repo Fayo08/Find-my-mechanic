@@ -2,16 +2,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-// .datepicker{
-// display: none;
-// }
+.datepicker{
+display: none;
+}
 
 .datepicker-input{
     border: none;
     border-bottom: 1px solid black;
+    transition: ease;
+    transition-duration: 3000ms;
 }
 
-.datepicker-input__focused{
+.datepicker-input:hover{
     border: none;
     border-bottom: 1px solid black;
     border-color: #4EAD97;
@@ -80,4 +82,8 @@ button.month-change {
     width: 100%;
     height: 100%;
     text-decoration: none;
+}
+
+.u-div-show{
+    display: block!important;
 }

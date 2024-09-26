@@ -3,21 +3,32 @@ import "./Datepicker.scss";
 import { useState } from "react";
 import nextIcon from "../../assets/icons/next.svg";
 import previousIcon from "../../assets/icons/previous.svg";
+import classNames from "classnames";
+
 
 const Datepicker = () => {
 
   const [isFocused, setIsFocused] = useState(false)
 
   
-  const handleShowChange = (e) =>{
+  const onChange = (e) =>{
     const { id } = e.target;
 
-    const inputClasses = classNames("datepicker-input", {
-      "datepicker-input__focused": isFocused
-    });
+    if (id === 'from') {
+      console.log("The id has been clicked")
+      setIsFocused(true);
     
+    } 
+  };
+    
+    
+  
+    const inputclasses = classNames("datepicker-input", {
+      "datepicker-input__focused" : isFocused,
+    });
+     
 
-  }
+  
 
   console.log('hello')
   return (
@@ -30,6 +41,8 @@ const Datepicker = () => {
             className="datepicker-input"
             id="from"
             autoComplete="off"
+            onChange={onChange}
+            inputclasses={inputclasses}
           />
           <div className="datepicker" id="datepicker-from">
           <div className="datepicker-calendar">
