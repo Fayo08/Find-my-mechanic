@@ -9,15 +9,13 @@ display: none;
 .datepicker-input{
     border: none;
     border-bottom: 1px solid black;
-    transition: ease;
-    transition-duration: 3000ms;
+    transition: border-color 300ms ease;
 }
 
-.datepicker-input:hover{
-    border: none;
-    border-bottom: 1px solid black;
-    border-color: #4EAD97;
-}
+// .datepicker-input:hover{
+   
+//     border-bottom: 1px solid #4EAD97;
+// }
 
 .datepicker-calendar{
     display: inline-block;
