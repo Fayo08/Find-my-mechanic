@@ -3,8 +3,10 @@ import * as L from "../../vendor/leaflet/leaflet.esm.js";
 import "../../vendor/leaflet/leaflet.css";
 import "./LocationsMap.scss";
 
-// OpenStreetMap data with CARTO's Voyager style: free, no API key.
-const TILES = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+// OpenStreetMap data with CARTO's Voyager style. CARTO needs a key; it is visible
+// in the browser anyway, so restrict it to the site's domain in the CARTO dashboard.
+const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || "cb1_4g5y_1_afedbe3644b6e1d4770bb3b3";
+const TILES = `https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`;
 const ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
@@ -46,7 +48,7 @@ const LocationsMap = ({ setCurrentLocation }) => {
       attributionControl: false,
     });
 
-    L.tileLayer(TILES, { subdomains: "abcd", maxZoom: 19 }).addTo(map);
+    L.tileLayer(TILES, { maxZoom: 19 }).addTo(map);
     L.control.zoom({ position: "topright" }).addTo(map);
     L.control.attribution({ position: "topright", prefix: false }).addAttribution(ATTRIBUTION).addTo(map);
 
