@@ -1,5 +1,6 @@
 import React from 'react';
 import './MechanicList.scss';
+import { api_URL } from '../../../utils.js';
 
 function MechanicList({  mechanic }) { 
     
@@ -7,7 +8,7 @@ function MechanicList({  mechanic }) {
    
    const {  name, location, price, type } = mechanic;
 
-    const imageUrl = `http://localhost:8080/img${image_path}`;
+    const imageUrl = `${api_URL}/img${image_path}`;
 
 
     return (

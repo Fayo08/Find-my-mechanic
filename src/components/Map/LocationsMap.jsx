@@ -7,7 +7,8 @@ const LocationsMap = ({setCurrentLocation}) => {
   
     useEffect(() => {
       const loader = new Loader({
-        apiKey: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+        // Set VITE_GOOGLE_MAPS_KEY at build time (a key restricted to your site)
+        apiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY || "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
         version: "weekly",
       });
   

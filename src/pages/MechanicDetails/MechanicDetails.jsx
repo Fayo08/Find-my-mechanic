@@ -51,7 +51,7 @@ function MechanicDetails() {
   }
 
   const { image_path } = mechanicDetails;
-  const imageUrl = `http://localhost:8080/img${image_path}`;
+  const imageUrl = `${api_URL}/img${image_path}`;
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
