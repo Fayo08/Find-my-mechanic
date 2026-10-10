@@ -7,10 +7,11 @@ import './SignUp.scss'
 
 function SignUp(props) {
     return (
+        <main className='sign-up__page'>
         < section className='sign-up'>
-        <div>
-            <img src={BackIcon} alt="This is a previous icon" />
-        </div>
+        <Link to="/" aria-label="Back to home">
+            <img src={BackIcon} alt="" />
+        </Link>
         <div className='sign-up__content'>
         <div className='sign-up__title'>
         <h2>Welcome to Find my Mechanic.</h2>
@@ -28,6 +29,7 @@ function SignUp(props) {
         </div>
         </div>
         </section>
+        </main>
     );
 }
 

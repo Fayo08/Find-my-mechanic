@@ -13,7 +13,7 @@ function MechanicList({  mechanic }) {
 
     return (
         <div className='mechanic-list'>
-            <img className='mechanic-list__img' src={imageUrl} alt="Mechanic profile photo" />
+            <img className='mechanic-list__img' src={imageUrl} alt="" />
             <div className='mechanic-list__container' >
             <div className='mechanic-list__details'>
                 <h3 className='mechanic-list__name'>{name}</h3>
@@ -21,7 +21,7 @@ function MechanicList({  mechanic }) {
             </div>
            
                 <div className='mechanic-list__price'>
-                    {price}
+                    {price != null && `$${price}`}
                 </div>
                 </div>
           

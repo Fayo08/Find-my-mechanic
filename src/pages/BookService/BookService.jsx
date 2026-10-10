@@ -55,13 +55,13 @@ function BookService() {
   };
 
   return (
-    <main>
+    <main className="screen">
       <Header
-        onGetCurrentLocation={() => window.GetCurrentLocation()}
         originalMessage="Edmonton, Alberta"
         Backlink="/get-location"
       />
-      <section className="bookservice">
+      <section className="bookservice stage">
+        <LocationsMap />
         <div className="bookservice__content">
           <div className="bookservice__title">
             <h3>Book a service</h3>
@@ -70,9 +70,9 @@ function BookService() {
 
           <div className="bookservice__card">
             <div className="bookservice__car-details">
-              <img src={carPhoto} alt="This is the photo of a car" />
+              <img className="bookservice__car" src={carPhoto} alt="BMW iX M60" />
               <p> BMW iX M60 2022</p>
-              <img src={editIcon} alt="This is an edit icon" />
+              <img src={editIcon} alt="Edit car" />
             </div>
             <div className="bookservice__services">
               <div className="dropdown">
@@ -111,7 +111,6 @@ function BookService() {
             />
           </div>
         </div>
-        <LocationsMap />
       </section>
     </main>
   );

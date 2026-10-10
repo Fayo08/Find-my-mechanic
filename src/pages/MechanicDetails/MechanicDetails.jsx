@@ -47,7 +47,17 @@ function MechanicDetails() {
   }, [mechanicId]);
 
   if (!mechanicDetails) {
-    return <div>Loading...</div>;
+    return (
+      <main className="screen">
+        <Header Backlink="/bookservices" originalMessage="Edmonton, Alberta" />
+        <div className="stage">
+          <LocationsMap />
+          <section className="mechanic-details">
+            <p>Loading your mechanic…</p>
+          </section>
+        </div>
+      </main>
+    );
   }
 
   const { image_path } = mechanicDetails;
@@ -65,8 +75,8 @@ function MechanicDetails() {
   };
 
   return (
-    <>
-      <Header onClick={openModal} />
+    <main className="screen">
+      <Header onClick={openModal} originalMessage="Edmonton, Alberta" />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h2>Are you sure you want to cancel?</h2>
         <p>Your changes will not be saved</p>
@@ -74,13 +84,14 @@ function MechanicDetails() {
           <Buttons buttonText="Confirm" colorClass="button-with-icon-greenbg" />
         </Link>
       </Modal>
+      <div className="stage">
       <LocationsMap />
 
       <section className="mechanic-details">
         <div className="mechanic-details__container">
           <div className="mechanic-details__about">
             <div className="mechanic-details__info">
-              <img className="mechanic-details__img" src={imageUrl} alt="" />
+              <img className="mechanic-details__img" src={imageUrl} alt={mechanicDetails.name} />
               <div>
                 <h2>{mechanicDetails.name}</h2>
                 <p>Location: {mechanicDetails.location}</p>
@@ -142,7 +153,8 @@ function MechanicDetails() {
           </div>
         </div>
       </section>
-    </>
+      </div>
+    </main>
   );
 }
 

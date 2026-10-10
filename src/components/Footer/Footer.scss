@@ -3,19 +3,29 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-  height: auto;
-  padding: 1rem;
+  position: relative;
+  z-index: 3;
+  padding: 0.75rem 1rem;
   border-top: 2px solid $fmm-green;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background-color: $fmm-white;
 
   &__content {
     display: flex;
-    gap: 1rem;
     justify-content: center;
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
   }
 
   &__img {
@@ -23,22 +33,9 @@
     height: 24px;
   }
 
-  &__icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  &__text {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: $fmm-black;
   }
-
-  &__icon-container{
-    display:flex;
-    flex-direction: row;
-    gap: 192px
-  }
-
-  &__text{
-    @include body-black;
-  }
-
- 
 }

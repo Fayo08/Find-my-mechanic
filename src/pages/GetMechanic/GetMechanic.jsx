@@ -15,6 +15,7 @@ function GetMechanic(props) {
   const { category } = useParams();
   const [mechanics, setMechanics] = useState([]);
   const [selectedMechanic, setSelectedMechanic] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const fetchMechanics = async () => {
@@ -22,8 +23,8 @@ function GetMechanic(props) {
         const response = await axios.get(
           `${api_URL}/api/services/mechanics/category/${category}`
         );
-console.log(mechanics)
         setMechanics(response.data);
+        setLoaded(true);
       } catch (error) {
         alert(`Error fetching mechanic`);
       }
@@ -45,10 +46,11 @@ console.log(mechanics)
   };
 
   return (
-    <main>
+    <main className="screen">
       <Header originalMessage="Edmonton, Alberta" Backlink="/bookservices" />
+      <div className="stage">
       <LocationsMap />
-      <section className="background">
+      <section className="get-mechanic">
         <ButtonWithIcon
           img={carPhoto}
           imgClass="img-getMechanic"
@@ -58,14 +60,25 @@ console.log(mechanics)
           textForServices={category}
         />
 
-        <div>
+        <div className="get-mechanic__list">
           {mechanics.map((mechanic) => (
-            <div key={mechanic.id} onClick={() => handleClick(mechanic.id)}>
+            <div
+              className="get-mechanic__item"
+              key={mechanic.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => handleClick(mechanic.id)}
+              onKeyDown={(e) => e.key === "Enter" && handleClick(mechanic.id)}
+            >
               <MechanicList mechanic={mechanic} />
             </div>
           ))}
+          {loaded && mechanics.length === 0 && (
+            <p className="get-mechanic__empty">No mechanics for this service yet.</p>
+          )}
         </div>
       </section>
+      </div>
     </main>
   );
 }

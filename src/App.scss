@@ -2,10 +2,43 @@
 @use "./styles/partials/typography" as *;
 @use "./styles/partials/variables" as *;
 
-   
-    * {
-        font-family: "Raleway";
-        box-sizing: border-box;
-        margin: 0rem;
-        padding: 0rem;
-      }
+* {
+  font-family: "Raleway", system-ui, sans-serif;
+  box-sizing: border-box;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: $fmm-white;
+  color: $fmm-black;
+}
+
+// Small icons by default. :where() keeps this at zero specificity,
+// so any image with its own class (photos, the car, map tiles) wins.
+:where(img) {
+  @include icons;
+}
+
+// A page with a map: header on top, the map filling the middle, footer at the bottom.
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+// Holds the map and the sheet that floats over it
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}

@@ -37,22 +37,24 @@ const MechanicDistance = () => {
     if (currentTime === totalTime) {
       setArrived('Your mechanic has arrived!')
       const navigationTimer = setTimeout(() => {
-        navigate('/post-review/:mechanicId');
+        navigate(`/post-review/${mechanicId}`);
       }, 2000);
       return () => clearTimeout(navigationTimer);
     }
-  }, [currentTime, totalTime, navigate]);
+  }, [currentTime, totalTime, navigate, mechanicId]);
 
   return (
-    <>
+    <main className="screen">
       <Header Backlink="/" originalMessage="Edmonton, Alberta" />
-      <LocationsMap />
-      <main className="mechanic-distance">
-        <h3>{arrived}</h3>
-        <TimeSlider totalTime={totalTime} currentTime={currentTime} />
-        <p>Hang tight for some minutes, help is on the way!</p>
-      </main>
-    </>
+      <div className="stage">
+        <LocationsMap />
+        <section className="mechanic-distance">
+          <h3>{arrived}</h3>
+          <TimeSlider totalTime={totalTime} currentTime={currentTime} />
+          <p>Hang tight for some minutes, help is on the way!</p>
+        </section>
+      </div>
+    </main>
   );
 };
 

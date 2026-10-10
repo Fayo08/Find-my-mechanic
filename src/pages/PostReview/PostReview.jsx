@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api_URL } from "../../../utils.js";
 import axios from "axios";
 import "./PostReview.scss";
+import "../MechanicDistance/MechanicDistance.scss";
 import Header from "../../components/Header/Header";
 import LocationsMap from "../../components/Map/LocationsMap";
 import Modal from "../../components/Modal/Modal";
@@ -50,14 +51,15 @@ function PostReview() {
   };
 
   return (
-    <>
-      <Header />
-      <LocationsMap />
-
-      <main className="mechanic-distance">
-        <h3>Service Complete!</h3>
-        <TimeSlider sliderClass="time-slider" />
-      </main>
+    <main className="screen">
+      <Header Backlink="/" originalMessage="Edmonton, Alberta" />
+      <div className="stage">
+        <LocationsMap />
+        <section className="mechanic-distance">
+          <h3>Service Complete!</h3>
+          <TimeSlider totalTime={1} currentTime={1} />
+        </section>
+      </div>
 
       <div>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -106,7 +108,7 @@ function PostReview() {
     </div>
         </Modal>
       </div>
-    </>
+    </main>
   );
 }
 

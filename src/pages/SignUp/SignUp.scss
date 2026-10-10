@@ -2,30 +2,66 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
 
-.sign-up{
-padding: 1rem;
+  // From tablet up, a centred card on a green backdrop
+  @include media(tablet) {
+    width: 100%;
+    max-width: 28rem;
+    margin: 10vh auto;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background-color: $fmm-white;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  }
 
-&__title{
+  &__page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    @include media(tablet) {
+      display: flow-root;
+      background-color: $fmm-green-faded;
+    }
+  }
+
+  &__title {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
-}
-&__input{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+    h2 {
+      @include text-header;
+    }
 
-&__content{
+    p {
+      @include body-gray;
+    }
+  }
+
+  &__input {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-&__fields{
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__fields {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-}
+
+    a {
+      text-decoration: none;
+    }
+  }
 }

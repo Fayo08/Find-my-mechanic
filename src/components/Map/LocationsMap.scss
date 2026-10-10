@@ -1,23 +1,83 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
- 
-#map {
-    height: 100%;
-    z-index: -1;
+// Fills the stage behind the sheet
+.map {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #eef2ef;
+
+  // Leaflet's own text uses the app font
+  &.leaflet-container {
+    font-family: "Raleway", system-ui, sans-serif;
+  }
+
+  .leaflet-control-attribution {
+    font-size: 10px;
+    border-radius: 0 0 0 6px;
+  }
+
+  // On phones the sheet covers the bottom, so the zoom buttons are only shown from tablet up
+  .leaflet-control-zoom {
+    display: none;
+
+    @include media(tablet) {
+      display: block;
+      margin-top: 2.25rem;
     }
-  
-  
-  .custom-map-control-button {
-    background-color: #fff;
-    border: 0;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-    margin: 10px;
-    padding: 0 0.5em;
-    font: 400 18px Roboto, Arial, sans-serif;
-    overflow: hidden;
-    height: 40px;
-    cursor: pointer;
   }
-  .custom-map-control-button:hover {
-    background: rgb(235, 235, 235);
+}
+
+// "You are here" dot with a soft pulse
+.map-you {
+  span {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: $fmm-green;
+    border: 3px solid $fmm-white;
+    box-shadow: 0 0 0 0 rgba(78, 173, 151, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+    animation: map-pulse 2s infinite;
   }
+}
+
+@keyframes map-pulse {
+  70% {
+    box-shadow: 0 0 0 16px rgba(78, 173, 151, 0), 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(78, 173, 151, 0), 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-you span {
+    animation: none;
+  }
+}
+
+// Nearby garages
+.map-garage {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: $fmm-white;
+  border: 2px solid $fmm-green;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: $fmm-green;
+  }
+}
+
+.map-label {
+  font-weight: 600;
+  color: $fmm-black;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
