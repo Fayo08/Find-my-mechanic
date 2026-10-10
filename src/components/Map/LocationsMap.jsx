@@ -4,7 +4,7 @@ import "../../vendor/leaflet/leaflet.css";
 import "./LocationsMap.scss";
 
 // OpenStreetMap data with CARTO's Voyager style. CARTO needs a key, which the build reads
-// from the CARTO_KEY repository secret (or VITE_CARTO_KEY in a local .env file).
+// from the CARTO repository secret (or VITE_CARTO_KEY in a local .env file).
 // Browsers still see it, so restrict it to the site's domain in the CARTO dashboard.
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || "";
 const TILES = `https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=${CARTO_KEY}`;

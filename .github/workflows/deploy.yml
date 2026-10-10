@@ -30,8 +30,8 @@ jobs:
           BASE_PATH: /${{ github.event.repository.name }}/
           # The deployed API. Override with a repository variable named VITE_API_URL.
           VITE_API_URL: ${{ vars.VITE_API_URL || 'https://findmymechanic-api-fayo08.onrender.com' }}
-          # CARTO basemap key, stored as a repository secret named CARTO_KEY
-          VITE_CARTO_KEY: ${{ secrets.CARTO_KEY }}
+          # CARTO basemap key, stored as a repository secret named CARTO
+          VITE_CARTO_KEY: ${{ secrets.CARTO }}
       # Single-page app: serve index.html for deep links like /warehouse/1
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
