@@ -6,7 +6,7 @@ import "./LocationsMap.scss";
 // OpenStreetMap data with CARTO's Voyager style. CARTO needs a key; it is visible
 // in the browser anyway, so restrict it to the site's domain in the CARTO dashboard.
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || "cb1_4g5y_1_afedbe3644b6e1d4770bb3b3";
-const TILES = `https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`;
+const TILES = `https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=${CARTO_KEY}`;
 const ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
